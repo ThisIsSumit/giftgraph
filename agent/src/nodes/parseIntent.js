@@ -1,4 +1,4 @@
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { z } from "zod";
 
 const IntentSchema = z.object({
@@ -9,8 +9,9 @@ const IntentSchema = z.object({
   budget: z.number().describe("max budget in USD; if not mentioned, default to 40"),
 });
 
-const model = new ChatAnthropic({
-  model: "claude-sonnet-4-5",
+// Reads GOOGLE_API_KEY from process.env automatically (Google AI Studio key)
+const model = new ChatGoogleGenerativeAI({
+  model: "gemini-2.0-flash",
   temperature: 0,
 }).withStructuredOutput(IntentSchema, { name: "extract_intent" });
 

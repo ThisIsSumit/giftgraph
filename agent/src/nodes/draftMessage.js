@@ -1,6 +1,7 @@
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
-const model = new ChatAnthropic({ model: "claude-sonnet-4-5", temperature: 0.7 });
+// Reads GOOGLE_API_KEY from process.env automatically (Google AI Studio key)
+const model = new ChatGoogleGenerativeAI({ model: "gemini-2.0-flash", temperature: 0.7 });
 
 export async function draftMessage(state) {
   const { chosen, recipient } = state;
