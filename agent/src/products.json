@@ -1,0 +1,22 @@
+[
+  { "id": "p1", "name": "Trail Running Backpack", "tags": ["hiking", "outdoors", "fitness"], "price": 45, "description": "Lightweight 15L pack for day hikes." },
+  { "id": "p2", "name": "Insulated Steel Water Bottle", "tags": ["hiking", "outdoors", "wellness"], "price": 22, "description": "Keeps drinks cold for 24 hours, perfect for trails." },
+  { "id": "p3", "name": "Compact Hiking Poles", "tags": ["hiking", "outdoors"], "price": 38, "description": "Collapsible aluminum trekking poles." },
+  { "id": "p4", "name": "Trail Mix Gift Box", "tags": ["hiking", "outdoors", "food"], "price": 18, "description": "Assorted nuts, dried fruit, and chocolate." },
+  { "id": "p5", "name": "Pour-Over Coffee Set", "tags": ["coffee", "home"], "price": 34, "description": "Ceramic dripper with matching mug." },
+  { "id": "p6", "name": "Single-Origin Coffee Sampler", "tags": ["coffee", "food"], "price": 28, "description": "Four 4oz bags from small roasters." },
+  { "id": "p7", "name": "Milk Frother", "tags": ["coffee", "home"], "price": 15, "description": "Handheld electric frother." },
+  { "id": "p8", "name": "Bestseller Fiction Bundle", "tags": ["books", "reading"], "price": 32, "description": "Three acclaimed novels, gift-wrapped." },
+  { "id": "p9", "name": "Reading Light Clip", "tags": ["books", "reading"], "price": 12, "description": "Rechargeable clip-on book light." },
+  { "id": "p10", "name": "Leather Bookmark Set", "tags": ["books", "reading"], "price": 10, "description": "Hand-stitched leather bookmarks, set of 3." },
+  { "id": "p11", "name": "Wireless Earbuds", "tags": ["tech", "fitness"], "price": 49, "description": "Sweat-resistant earbuds with charging case." },
+  { "id": "p12", "name": "Smart Plug Duo", "tags": ["tech", "home"], "price": 24, "description": "WiFi smart plugs, app-controlled." },
+  { "id": "p13", "name": "Portable Phone Charger", "tags": ["tech", "outdoors"], "price": 20, "description": "10000mAh power bank." },
+  { "id": "p14", "name": "Scented Candle Trio", "tags": ["home", "wellness"], "price": 26, "description": "Soy candles in calming scents." },
+  { "id": "p15", "name": "Weighted Blanket", "tags": ["home", "wellness"], "price": 55, "description": "7lb blanket for better sleep." },
+  { "id": "p16", "name": "Herbal Tea Sampler", "tags": ["wellness", "food"], "price": 16, "description": "Twelve caffeine-free tea blends." },
+  { "id": "p17", "name": "Yoga Mat", "tags": ["wellness", "fitness"], "price": 30, "description": "Non-slip eco-friendly mat." },
+  { "id": "p18", "name": "Resistance Band Set", "tags": ["fitness"], "price": 19, "description": "Five bands, varying resistance." },
+  { "id": "p19", "name": "Gourmet Chocolate Box", "tags": ["food"], "price": 25, "description": "Handmade truffles, 12 pieces." },
+  { "id": "p20", "name": "Desk Succulent Trio", "tags": ["home"], "price": 21, "description": "Low-maintenance plants in ceramic pots." }
+]
