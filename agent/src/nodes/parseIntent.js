@@ -11,7 +11,7 @@ const IntentSchema = z.object({
 
 // Reads GOOGLE_API_KEY from process.env automatically (Google AI Studio key)
 const model = new ChatGoogleGenerativeAI({
-  model: "gemini-2.0-flash",
+  model: "models/gemini-3-flash-preview",
   temperature: 0,
 }).withStructuredOutput(IntentSchema, { name: "extract_intent" });
 

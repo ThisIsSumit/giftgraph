@@ -1,7 +1,7 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
 // Reads GOOGLE_API_KEY from process.env automatically (Google AI Studio key)
-const model = new ChatGoogleGenerativeAI({ model: "gemini-2.0-flash", temperature: 0.7 });
+const model = new ChatGoogleGenerativeAI({ model: "models/gemini-3-flash-preview", temperature: 0.7 });
 
 export async function draftMessage(state) {
   const { chosen, recipient } = state;
