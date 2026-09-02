@@ -1,5 +1,5 @@
 import { initializeApp, applicationDefault, cert, getApps } from "firebase-admin/app";
-import fs from "fs";
+import fs from "node:fs";
 
 // Avoid re-initializing on hot reload / multiple imports
 if (getApps().length === 0) {

@@ -1,0 +1,44 @@
+---
+id: cbb89492-cf83-4b9d-a278-aee95a2706b5
+---
+flowchart TB
+    subgraph Client["Frontend — React (Firebase Hosting)"]
+        UI[PromptInput / StepsPanel / ResultCard]
+        Auth1[Firebase Auth SDK]
+    end
+
+    subgraph Backend["Backend — Express / Node.js (Cloud Run)"]
+        Route["POST /agent/run\n(SSE via res.write)"]
+        Verify["verifyFirebaseToken.js\nfirebase-admin (Node)"]
+        AgentModule["agent/src/graph.js\n(imported directly — same Node process)"]
+        FSService["services/firestore.js\n(firebase-admin/firestore)"]
+    end
+
+    subgraph Agent["Agent logic — LangGraph.js"]
+        N1[parseIntent.js]
+        N2[searchCatalog.js]
+        N3[checkBudget.js]
+        N4[draftMessage.js]
+        N1 --> N2 --> N3
+        N3 -- "chosen found" --> N4
+        N3 -- "nothing in budget" --> N2
+    end
+
+    subgraph GCP["Google Cloud / Firebase"]
+        Firestore[(Firestore\nproducts, sessions)]
+        FirebaseAuth[(Firebase Auth)]
+        SecretMgr[(Secret Manager / .env\nGOOGLE_API_KEY)]
+    end
+
+    UI -- "prompt + Bearer idToken" --> Route
+    Auth1 -.->|sign in| FirebaseAuth
+    Route --> Verify
+    Verify -->|verifies token via| FirebaseAuth
+    Verify --> AgentModule
+    AgentModule --> N1
+    N4 -->|final state| Route
+    Route -- "SSE: step, step, step, done" --> UI
+    Route --> FSService
+    FSService -->|read products| Firestore
+    FSService -->|write session log| Firestore
+    AgentModule -.->|reads key at startup| SecretMgr
