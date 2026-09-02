@@ -1,0 +1,248 @@
+:root {
+  /* Color: deep forest ink with a gold-ribbon accent - deliberately not the
+     cream+terracotta or near-black+neon defaults. */
+  --bg: #16231c;
+  --bg-elevated: #1e2f26;
+  --text: #f4f1e8;
+  --text-muted: #9fb0a3;
+  --accent: #e8b04b;
+  --accent-soft: #c98f3a;
+  --line: #30412f;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.app-shell {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+
+.wordmark span {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 4px 0 0;
+  max-width: 42ch;
+}
+
+/* --- Prompt form --- */
+
+.prompt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prompt-input {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 16px;
+  resize: vertical;
+  min-height: 84px;
+}
+
+.prompt-input::placeholder {
+  color: var(--text-muted);
+}
+
+.prompt-submit {
+  align-self: flex-start;
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  color: #1a1408;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.prompt-submit:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.prompt-submit:disabled {
+  background: var(--line);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* --- Steps trail: a connected vertical line, since these steps really do
+   happen in sequence - this is the one earned structural device on the page. --- */
+
+.steps-trail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.steps-trail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.steps-trail-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 24px;
+  bottom: -8px;
+  width: 1px;
+  background: var(--line);
+}
+
+.steps-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.steps-dot-done {
+  background: var(--accent-soft);
+}
+
+.steps-dot-active {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(232, 176, 75, 0.2);
+}
+
+.steps-label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* --- Result card --- */
+
+.result-card {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.result-eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+
+.result-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.result-price {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 0 0 12px;
+}
+
+.result-description {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 20px;
+}
+
+.result-note {
+  background: var(--bg-elevated);
+  border-left: 2px solid var(--accent);
+  padding: 14px 16px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.result-note p {
+  margin: 0;
+}
+
+.result-reset {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.result-reset:hover {
+  border-color: var(--accent-soft);
+}
+
+.error-text {
+  color: #e08a6b;
+  font-size: 14px;
+}
