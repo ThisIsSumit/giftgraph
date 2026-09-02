@@ -2,6 +2,26 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // Product catalog: anyone can read (it's just a browsable list),
+    // nobody writes from the client - only the seed script (via Admin SDK,
+    // which bypasses these rules entirely) populates it.
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Session logs: a user can only read their own sessions.
+    // No client writes at all - the backend writes these via the Admin SDK
+    // after each agent run, so `allow write: if false` here is intentional,
+    // not a bug.
+    match /sessions/{sessionId} {
+      allow read: if request.auth != null
+                   && resource.data.userId == request.auth.uid;
+      allow write: if false;
+    }
+
+    // Everything else stays locked down.
     match /{document=**} {
       allow read, write: if false;
     }
